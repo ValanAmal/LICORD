@@ -122,7 +122,7 @@ a {
   font-size: 4rem;
   position: absolute;
   top: 30%;
-  left: 40%;
+  left: 30%;
   bottom: 30%;
   right: 30%;
   font-weight: bold;
@@ -130,8 +130,10 @@ a {
   transform: scale(0.5);
   animation: fadeInScale 1.5s ease-out forwards;
   background: linear-gradient(135deg, #c0c0c0, #888888, #505050, #888888, #c0c0c0);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
 .licord {
@@ -141,6 +143,7 @@ a {
   opacity: 0;
   animation: fadeIn 1.5s ease-out 1.5s forwards;
   background: linear-gradient(135deg, #d1d1d1, #a0a0a0, #737373, #a0a0a0, #d1d1d1);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 12px 24px;
@@ -154,6 +157,7 @@ a {
 
 .licord:hover {
   background: linear-gradient(135deg, #e0e0e0, #b5b5b5, #868686, #b5b5b5, #e0e0e0);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border: 2px solid #b5b5b5;

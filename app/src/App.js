@@ -6,6 +6,7 @@ import { sendOTP, verifyOTP } from "./service";
 import Footer from "./footer";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "./components/home";
+import NewsTicker from "./components/NewsTicker";
 
 const LicetAnimation = () => {
   const [fadeOut, setFadeOut] = useState(false);
