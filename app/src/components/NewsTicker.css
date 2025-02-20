@@ -1,0 +1,30 @@
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+  }
+  
+  .ticker-content {
+    display: flex;
+    width: max-content;
+    animation: scrollTicker 15s linear infinite;
+  }
+  
+  .ticker-item {
+    white-space: nowrap;
+    padding: 0 50px;
+    font-size: 1rem;
+  }
+  
+  @keyframes scrollTicker {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
