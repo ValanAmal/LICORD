@@ -8,11 +8,32 @@ const eventsData = {
 };
 
 const Calendar = () => {
-  const [currentMonth, setCurrentMonth] = useState(1); 
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const daysInMonth = new Date(2025, currentMonth + 1, 0).getDate();
-  const firstDay = new Date(2025, currentMonth, 1).getDay();
+  const daysInMonth = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    0
+  ).getDate();
+  const firstDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    1
+  ).getDay();
+
+  // Function to change months
+  const goToPreviousMonth = () => {
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+    );
+  };
+
+  const goToNextMonth = () => {
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+    );
+  };
 
   const handleDayClick = (date) => {
     setSelectedDate(date);
@@ -20,52 +41,64 @@ const Calendar = () => {
 
   return (
     <div>
-        <h1 className="title">CALENDAR</h1>
-    <div className="calendar-container">
-      {/* Calendar Header */}
-      <div className="calendar-header">
-        <h2>Event Calendar</h2>
+      <h1 className="title">CALENDAR</h1>
+      <div className="calendar-container">
+        {/* Calendar Header */}
+        <div className="calendar-header">
+          <button onClick={goToPreviousMonth} className="month-btn">{"<"}</button>
+          <h2>
+            {currentDate.toLocaleString("default", { month: "long" })}{" "}
+            {currentDate.getFullYear()}
+          </h2>
+          <button onClick={goToNextMonth} className="month-btn">{">"}</button>
+        </div>
+
+        {/* Calendar Grid */}
+        <div className="calendar-grid">
+          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+            <div key={day} className="calendar-day">{day}</div>
+          ))}
+
+          {Array(firstDay)
+            .fill(null)
+            .map((_, index) => (
+              <div key={`empty-${index}`} className="empty"></div>
+            ))}
+
+          {[...Array(daysInMonth)].map((_, day) => {
+            const dateStr = `${currentDate.getFullYear()}-${String(
+              currentDate.getMonth() + 1
+            ).padStart(2, "0")}-${String(day + 1).padStart(2, "0")}`;
+
+            return (
+              <div
+                key={day}
+                className={`calendar-date ${
+                  eventsData[dateStr] ? "event-day" : ""
+                }`}
+                onClick={() => handleDayClick(dateStr)}
+              >
+                {day + 1}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Event Details Section */}
+        <div className="event-details">
+          <h3>Events</h3>
+          {selectedDate && eventsData[selectedDate] ? (
+            eventsData[selectedDate].map((event, index) => (
+              <div key={index} className="event-item">
+                <p><strong>{event.title}</strong></p>
+                <p>{event.time}</p>
+              </div>
+            ))
+          ) : (
+            <p>No events on this date</p>
+          )}
+        </div>
       </div>
-
-      {/* Calendar Grid */}
-      <div className="calendar-grid">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-          <div key={day} className="calendar-day">{day}</div>
-        ))}
-
-        {Array(firstDay).fill(null).map((_, index) => (
-          <div key={`empty-${index}`} className="empty"></div>
-        ))}
-
-        {[...Array(daysInMonth)].map((_, day) => {
-          const dateStr = `2025-${String(currentMonth + 1).padStart(2, "0")}-${String(day + 1).padStart(2, "0")}`;
-          return (
-            <div
-              key={day}
-              className={`calendar-date ${eventsData[dateStr] ? "event-day" : ""}`}
-              onClick={() => handleDayClick(dateStr)}
-            >
-              {day + 1}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Event Details Section */}
-      <div className="event-details">
-        <h3>Events</h3>
-        {selectedDate && eventsData[selectedDate] ? (
-          eventsData[selectedDate].map((event, index) => (
-            <div key={index} className="event-item">
-              <p><strong>{event.title}</strong></p>
-              <p>{event.time}</p>
-            </div>
-          ))
-        ) : (
-          <p>No events on this date</p>
-        )}
-      </div>
-    </div>
     </div>
   );
 };

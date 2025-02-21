@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Dashboard from "./components/home";
 import RankBoard from "./components/Rank";
 import Calendar from "./components/Calendar";
+import ProtectedRoute from "./ProtectedRoute";
 
 const LicetAnimation = () => {
   const [fadeOut, setFadeOut] = useState(false);
@@ -22,7 +23,7 @@ const LicetAnimation = () => {
 
   return (
     <div className={`container ${fadeOut ? "fade-out" : "fade-in"}`}>
-      <img src={logo} alt="Licet" className="logo" />
+      <a href="https://licet.ac.in/"><img src={logo} alt="Licet" className="logo" /></a>
       <div className="text-content">
         <h1 className="licet">LICET's</h1>
         <Link
@@ -43,9 +44,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LicetAnimation />} />
         <Route path="/home" element={<NevaJoLogin/>} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/Rank" element={<RankBoard />} />
-        <Route path="/Calendar" element={<Calendar />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/Rank" element={<ProtectedRoute><RankBoard /></ProtectedRoute>} />
+        <Route path="/Calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
       </Routes>
       <Footer/>
     </Router>
@@ -103,23 +104,24 @@ const NevaJoLogin = () => {
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
     setMessage("");
-
+  
     if (!otp.trim()) {
       setMessage("Enter the OTP.");
       return;
     }
-   
-
+  
     setLoading(true);
     try {
       const data = await verifyOTP(email, otp);
       if (data.success) {
-        handleLoginSuccess();
+        sessionStorage.setItem("isVerified", "true"); 
+        handleLoginSuccess(); 
+        navigate("/dashboard");
       } else {
         setMessage("Invalid OTP, please try again.");
       }
     } catch (error) {
-      setMessage(error.message);
+      setMessage(error.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
