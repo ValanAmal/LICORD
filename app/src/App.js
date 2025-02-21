@@ -6,7 +6,8 @@ import { sendOTP, verifyOTP } from "./service";
 import Footer from "./footer";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "./components/home";
-import NewsTicker from "./components/NewsTicker";
+import RankBoard from "./components/Rank";
+import Calendar from "./components/Calendar";
 
 const LicetAnimation = () => {
   const [fadeOut, setFadeOut] = useState(false);
@@ -43,6 +44,8 @@ const App = () => {
         <Route path="/" element={<LicetAnimation />} />
         <Route path="/home" element={<NevaJoLogin/>} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/Rank" element={<RankBoard />} />
+        <Route path="/Calendar" element={<Calendar />} />
       </Routes>
       <Footer/>
     </Router>

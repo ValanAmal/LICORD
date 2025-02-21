@@ -1,5 +1,6 @@
 import React from "react";
+import "./CardContent.css"
 export default function CardContent({ children }) {
-    return <div className="p-2">{children}</div>;
+    return <div className="cc1">{children}</div>;
   }
   

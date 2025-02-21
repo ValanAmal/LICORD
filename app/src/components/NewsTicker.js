@@ -1,22 +1,22 @@
 import React from "react";
-import "./NewsTicker.css"; // Import CSS for styling
+import "./NewsTicker.css"; 
 
 const NewsTicker = () => {
   const newsItems = [
-    "🚀 Breaking: New tech innovation announced!",
-    "📈 Stock Market Update: S&P 500 hits new high.",
-    "⚽ Sports: Local team wins championship!",
-    "🎭 Entertainment: Upcoming movies to watch this summer.",
-    "🌍 World News: Climate change summit begins today."
+    { image: "/logo.png", alt: "Tech Innovation" },
+    { image: "/Licetbg.png", alt: "Stock Market" },
+    { image: "/land1.jpg", alt: "Sports Championship" },
+    { image: "/land3.jpg", alt: "Upcoming Movies" },
+    { image: "/land2.jpg", alt: "Climate Summit" }
   ];
 
   return (
     <div className="news-ticker">
       <div className="ticker-content">
-        {newsItems.map((item, index) => (
-          <span key={index} className="ticker-item">
-            {item}
-          </span>
+      {newsItems.concat(newsItems).map((item, index) => ( // Duplicate for smooth looping
+          <div key={index} className="ticker-item">
+            <img src={item.image} alt={item.alt} className="news-poster" />
+          </div>
         ))}
       </div>
     </div>

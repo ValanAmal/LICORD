@@ -1,13 +1,14 @@
 import React from 'react';
+import "./Sidebar.css"
 
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-gray-800 text-white p-4">
-      <h2 className="text-xl font-bold">Navigation</h2>
+    <div className="Navigation">
+      <h2 className="navh1">Navigation</h2>
       <ul>
-        <li className="mt-2">Dashboard</li>
-        <li className="mt-2">Courses</li>
-        <li className="mt-2">Settings</li>
+        <li className="t1"> <a href="./home">Dashboard</a></li>
+        <li className="t2"> <a href="./Calendar">Calendar</a></li>
+        <li className="t3"> <a href="./home">Settings</a></li>
       </ul>
     </div>
   );

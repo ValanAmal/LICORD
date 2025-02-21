@@ -1,0 +1,48 @@
+.Navigation {
+    position: absolute;
+    top: 150%;
+    width: 250px;
+    background-color: rgba(30, 30, 30, 0.9);
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.navh1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #ecf0f1;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 15px 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.t1 { background-color: black;; }
+.t2 { background-color: black;; }
+.t3 { background-color: black;; }
+
+ul li:hover {
+    background-color: #44444400;
+    transform: scale(1.05);
+}
