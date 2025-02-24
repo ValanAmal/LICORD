@@ -6,7 +6,7 @@
     max-width: 800px;
     margin: auto;
     text-align: center;
-    background: black;
+    background: #00000045;
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -66,10 +66,73 @@
     text-align: left;
   }
   
-.event-item {
-    background: #444;
+  .event-item {
+    background: #000000;
     padding: 8px;
     border-radius: 5px;
     margin-top: 5px;
-  }
+}
   
+.add-event {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-event input[type="text"],
+.add-event input[type="time"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.add-event button {
+  padding: 8px 12px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-event button:hover {
+  background-color: #0000005f;
+}
+
+.event-details {
+  background: #00000000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.event-item {
+  background: #ffffff00;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.event-item:hover {
+  transform: scale(1.02);
+}
+
+.event-item p {
+  margin: 0;
+}
+
+.event-item strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #ffffff;
+}

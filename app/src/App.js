@@ -9,6 +9,8 @@ import Dashboard from "./components/home";
 import RankBoard from "./components/Rank";
 import Calendar from "./components/Calendar";
 import ProtectedRoute from "./ProtectedRoute";
+import UploadCertificate from "./components/UploadCertificate";
+import Upload from "./components/upload";
 
 const LicetAnimation = () => {
   const [fadeOut, setFadeOut] = useState(false);
@@ -47,6 +49,7 @@ const App = () => {
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/Rank" element={<ProtectedRoute><RankBoard /></ProtectedRoute>} />
         <Route path="/Calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+        <Route path="/UploadCertificate" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
       </Routes>
       <Footer/>
     </Router>
@@ -145,7 +148,7 @@ const NevaJoLogin = () => {
       <div className="login-container">
         <h2 className="">WELCOME</h2>
         {message && <p className="error-message">{message}</p>}
-        <form>
+        
           <label>Email</label>
           <input
             type="email"
@@ -185,7 +188,7 @@ const NevaJoLogin = () => {
               </button>
             </div>
           )}
-        </form>
+        
       </div>
     </div>
       )}</div>

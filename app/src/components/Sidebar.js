@@ -8,6 +8,7 @@ export default function Sidebar() {
       <ul>
         <li className="t1"> <a href="./home">Dashboard</a></li>
         <li className="t2"> <a href="./Calendar">Calendar</a></li>
+        <li className="t2"> <a href="./UploadCertificate">Upload</a></li>
         <li className="t3"> <a href="./home">Settings</a></li>
       </ul>
     </div>
